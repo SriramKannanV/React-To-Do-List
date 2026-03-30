@@ -11,6 +11,10 @@ const [inputValues, setInputValues] = useState('');
 
 const [activeFilter, setActiveFilter] = useState('all');
 
+useEffect(() => {
+    localStorage.setItem('localTask', JSON.stringify(listValues));
+}, [listValues]);
+
 function inputHandle(e){
     setInputValues(e.target.value)
   }

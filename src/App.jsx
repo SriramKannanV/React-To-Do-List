@@ -7,7 +7,14 @@ import { useState } from 'react'
 
 const App = () => {
 
-const [listValues, setListValues] = useState([]);
+const [listValues, setListValues] = useState(() => {
+  const savedTask = localStorage.getItem('localTask');
+
+  if(savedTask){
+    return JSON.parse(savedTask);
+  }
+  return [];
+});
 
 const completedTask = listValues.filter(task => task.completed);
 
